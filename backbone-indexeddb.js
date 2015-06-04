@@ -23,6 +23,13 @@
         return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
     }
 
+    var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+    var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || { READ_WRITE: "readwrite" }; // No prefix in moz
+    var IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange ; // No prefix in moz
+
+    window.IDBCursor = window.IDBCursor || window.webkitIDBCursor ||  window.mozIDBCursor ||  window.msIDBCursor ;
+
+
     if (typeof indexedDB === "undefined") { return; }
 
     var Deferred = Backbone.$ && Backbone.$.Deferred;
